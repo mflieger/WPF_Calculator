@@ -35,7 +35,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Name="txtdisplay" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="9" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">0</TextBlock>
+        <TextBlock Name="txtdisplay" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="9" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"></TextBlock>
         
         <Button Name="btnone" Grid.Column="1" Grid.Row="3" FontSize="20">1</Button>
         <Button Name="btntwo" Grid.Column="3" Grid.Row="3" FontSize="20">2</Button>
@@ -47,7 +47,6 @@
         <Button Name="btneight" Grid.Column="3" Grid.Row="7" FontSize="20">8</Button>
         <Button Name="btnnine" Grid.Column="5" Grid.Row="7" FontSize="20">9</Button>
         <Button Name="btnzero" Grid.Column="3" Grid.Row="9" FontSize="20">0</Button>
-
         <Button Name="btnplus" Grid.Column="7" Grid.Row="3" FontSize="20">+</Button>
         <Button Name="btnminus" Grid.Column="7" Grid.Row="5" FontSize="20">-</Button>
         <Button Name="btnmulti" Grid.Column="7" Grid.Row="7" FontSize="20">*</Button>

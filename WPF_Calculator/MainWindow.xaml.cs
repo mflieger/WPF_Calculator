@@ -20,9 +20,10 @@ namespace WPF_Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        public double DisplayValue { get; set; }
-        public int Operand { get; set; }
-        public char Operator { get; set; }
+        private double _op1;
+        private double _op2;
+        private char _opr;
+        private double _result;
         public MainWindow()
         {
             InitializeComponent();
@@ -47,7 +48,90 @@ namespace WPF_Calculator
 
         private void CalculatorDisplayer(object sender, RoutedEventArgs e)
         {
+            Button button = sender as Button;
 
+            if (button.Content.ToString() == "+" || button.Content.ToString() == "-" || button.Content.ToString() == "*" || button.Content.ToString() == "/" && _result != default)
+            {
+                double.TryParse(txtdisplay.Text, out _op1);
+            }
+            else
+            {
+                double.TryParse(txtdisplay.Text, out _result);
+            }
+
+            switch (button.Content.ToString())
+            {
+                case "+":
+                    _result = _result + _op1;
+                    txtdisplay.Text = _result.ToString();
+                    break;
+                case "-":
+                    _result = _result - _op1;
+                    txtdisplay.Text = _result.ToString();
+                    break;
+                case "*":
+                    _result = _result * _op1;
+                    txtdisplay.Text = _result.ToString();
+                    break;
+                case "/":
+                    if (_op1 == 0)
+                    {
+                        txtdisplay.Text = "ERROR";
+                    }
+                    else
+                    {
+                        _result = _result / _op1;
+                        txtdisplay.Text = _result.ToString();
+                    }
+                    break;
+
+                case "C":
+                    txtdisplay.Text = "";
+                    break;
+                case "=":
+                    txtdisplay.Text = _result.ToString();
+                    break;
+                default:
+                    if (_result == default)
+                    {
+                        _result = Convert.ToDouble(button.Content.ToString());
+                    }
+                    txtdisplay.Text += button.Content.ToString();
+                    break;
+            }
+        }
+
+        private void UpdateResult()
+        {
+            if(_op1 != default)
+            {
+                switch (_opr)
+                {
+                    case '+':
+                        _result = _result + _op1;
+                        txtdisplay.Text = _result.ToString();
+                        break;
+                    case '-':
+                        _result = _result - _op1;
+                        txtdisplay.Text = _result.ToString();
+                        break;
+                    case '*':
+                        _result = _result * _op1;
+                        txtdisplay.Text = _result.ToString();
+                        break;
+                    case '/':
+                        if (_op1 == 0)
+                        {
+                            txtdisplay.Text = "ERROR";
+                        }
+                        else
+                        {
+                            _result = _result / _op1;
+                            txtdisplay.Text = _result.ToString();
+                        }
+                        break;
+                }
+            }
         }
     }
 }
